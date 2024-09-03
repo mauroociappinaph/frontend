@@ -1,12 +1,9 @@
 import React from "react";
-import { Button } from "@/components/ui/button";
+
+import LandingPage from "@/page/page";
 
 function HomePage() {
-  return (
-    <div>
-      <Button>Hello</Button>
-    </div>
-  );
+  return <LandingPage></LandingPage>;
 }
 
 export default HomePage;
