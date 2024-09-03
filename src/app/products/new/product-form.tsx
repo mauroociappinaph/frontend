@@ -4,10 +4,14 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
+import { createProduct } from "../product.api";
 
 export function ProductForm() {
   const { register, handleSubmit } = useForm();
-  const onSubmit = handleSubmit((data) => console.log(data));
+  const onSubmit = handleSubmit(async (data) => {
+    console.log(data);
+    await createProduct({ ...data, price: parseFloat(data.price) });
+  });
   return (
     <form onSubmit={onSubmit}>
       <Label>Nombre del Producto</Label>
