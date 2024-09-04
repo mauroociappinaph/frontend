@@ -1,4 +1,16 @@
-export async function signUp(email: string, password: string) {
+export async function signUp({
+  email,
+  password,
+  firstName,
+  lastName,
+  businessName,
+}: {
+  email: string;
+  password: string | number;
+  firstName: string | undefined;
+  lastName: string | undefined;
+  businessName: string;
+}) {
   const res = await fetch("http://localhost:4000/api/entrepreneurs/signup", {
     method: "POST",
     headers: {
@@ -7,11 +19,12 @@ export async function signUp(email: string, password: string) {
     body: JSON.stringify({
       email,
       password,
-      firstName: "",
-      lastName: "",
-      businessName: "",
+      firstName,
+      lastName,
+      businessName,
     }),
   });
   const data = await res.json();
-  console.log(data);
+
+  return data;
 }

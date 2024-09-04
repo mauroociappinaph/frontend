@@ -9,4 +9,5 @@ export async function createProduct(productData: any) {
 
   const data = await res.json();
   console.log(data);
+  return data;
 }
