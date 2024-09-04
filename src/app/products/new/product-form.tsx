@@ -10,7 +10,7 @@ import { createProduct } from "../product.api";
 export function ProductForm() {
   const { register, handleSubmit } = useForm();
   const router = useRouter();
-  const [entrepreneurId, setEntrepreneurId] = useState<string | null>(null); // Aceptar string o null
+  const [entrepreneurId, setEntrepreneurId] = useState<string | null>(null);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
