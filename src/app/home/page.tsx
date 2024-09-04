@@ -1,7 +1,12 @@
 import React from "react";
+import Header from "@/components/component/Header";
 
 function HomePage() {
-  return <h1>Home</h1>;
+  return (
+    <>
+      <Header />
+    </>
+  );
 }
 
 export default HomePage;
