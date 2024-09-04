@@ -1,20 +1,20 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import React from "react";
-import { ProductForm } from "./product-form";
+import { SignUpForm } from "./sign-up-form";
 
-function ProductNewPage() {
+function SignUp() {
   return (
     <div className="h-screen flex justify-center items-center ">
       <Card>
         <CardHeader>
-          <CardTitle>Crear Producto</CardTitle>
+          <CardTitle>Registrarse</CardTitle>
         </CardHeader>
         <CardContent>
-          <ProductForm />
+          <SignUpForm />
         </CardContent>
       </Card>
     </div>
   );
 }
 
-export default ProductNewPage;
+export default SignUp;
