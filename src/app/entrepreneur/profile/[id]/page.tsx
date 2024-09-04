@@ -15,7 +15,10 @@ function EntrepreneurProfile() {
   return (
     <div>
       <h1 className="text-4xl font-bold">{`Perfil Emprendedor con id: ${id}`}</h1>
-      <Link href="/products/new" className={buttonVariants()}>
+      <Link
+        href={`/products/new?entrepreneurId=${id}`}
+        className={buttonVariants()}
+      >
         Crear Producto
       </Link>
     </div>
