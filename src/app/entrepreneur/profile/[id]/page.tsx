@@ -6,9 +6,27 @@ import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { profileApi } from "@/app/entrepreneur/profile/profile-api";
 
+// Definir las interfaces
+interface Product {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+}
+
+interface Entrepreneur {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  businessName: string;
+  businessDescription?: string;
+  products: Product[];
+}
+
 function EntrepreneurProfile() {
   const { id } = useParams();
-  const [entrepreneur, setEntrepreneur] = useState(null);
+  const [entrepreneur, setEntrepreneur] = useState<Entrepreneur | null>(null); // Tipo Entrepreneur o null
 
   useEffect(() => {
     console.log("id:", id);
