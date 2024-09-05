@@ -44,6 +44,7 @@ export function ProductForm() {
 
       // Redirigir al perfil del emprendedor después de crear el producto
       router.push(`/entrepreneur/profile/${entrepreneurId}`);
+      router.refresh();
     } catch (error) {
       console.error("Error creating product:", error);
     }
@@ -53,8 +54,10 @@ export function ProductForm() {
     <form onSubmit={onSubmit}>
       <Label>Nombre del Producto</Label>
       <Input {...register("name")} />
+
       <Label>Descripción del Producto</Label>
       <Input {...register("description")} />
+
       <Label>Precio</Label>
       <Input {...register("price")} />
       <Label>Imagen</Label>

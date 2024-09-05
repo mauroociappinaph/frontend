@@ -27,3 +27,11 @@ export async function createProduct({
   const data = await res.json();
   return data;
 }
+
+export async function getProducts() {
+  const res = await fetch("http://localhost:4000/api/products", {
+    cache: "no-store",
+  });
+  const data = await res.json();
+  return data;
+}
