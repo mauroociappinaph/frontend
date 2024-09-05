@@ -28,7 +28,8 @@ export default function RootLayout({
         )}
       >
         <main className="container  w-full pt-5">
-          <Nav />;{children}
+          <Nav />
+          {children}
         </main>
       </body>
     </html>

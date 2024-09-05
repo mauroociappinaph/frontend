@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { profileApi } from "@/app/entrepreneur/profile/profile-api";
+import { Card, CardContent, CardTitle, CardHeader } from "@/components/ui/card";
 
 // Definir las interfaces
 interface Product {
@@ -48,40 +49,51 @@ function EntrepreneurProfile() {
   }, [id]);
 
   return (
-    <div>
+    <div className="container">
       <h1 className="text-4xl font-bold">{`Perfil Emprendedor con id: ${id}`}</h1>
+      <div>
+        {/* Mostrar los datos del emprendedor */}
+        {entrepreneur && (
+          <div>
+            <p>
+              Nombre: {entrepreneur.firstName} {entrepreneur.lastName}
+            </p>
+            <p>Correo: {entrepreneur.email}</p>
+            <p>Negocio: {entrepreneur.businessName}</p>
+            <p>
+              Descripción del negocio:{" "}
+              {entrepreneur.businessDescription || "No disponible"}
+            </p>
 
-      {/* Mostrar los datos del emprendedor */}
-      {entrepreneur && (
-        <div>
-          <p>
-            Nombre: {entrepreneur.firstName} {entrepreneur.lastName}
-          </p>
-          <p>Correo: {entrepreneur.email}</p>
-          <p>Negocio: {entrepreneur.businessName}</p>
-          <p>
-            Descripción del negocio:{" "}
-            {entrepreneur.businessDescription || "No disponible"}
-          </p>
+            {/* Mostrar los productos */}
+            <div>
+              <h2 className="text-2xl font-semibold mt-4 text-center">
+                Productos
+              </h2>
+              {entrepreneur.products.length > 0 ? (
+                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
+                  <ul>
+                    {entrepreneur.products.map((product) => (
+                      <Card key={product.id}>
+                        <CardHeader>
+                          <CardTitle>{product.name}</CardTitle>
+                        </CardHeader>
 
-          {/* Mostrar los productos */}
-          <h2 className="text-2xl font-semibold mt-4">Productos</h2>
-          {entrepreneur.products.length > 0 ? (
-            <ul>
-              {entrepreneur.products.map((product) => (
-                <li key={product.id}>
-                  <p>Nombre: {product.name}</p>
-                  <p>Descripción: {product.description}</p>
-                  <p>Precio: {product.price}</p>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p>No hay productos disponibles.</p>
-          )}
-        </div>
-      )}
-
+                        <CardContent>
+                          <p>Descripción: {product.description}</p>
+                          <p>Precio: {product.price}</p>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </ul>
+                </div>
+              ) : (
+                <p>No hay productos disponibles.</p>
+              )}
+            </div>
+          </div>
+        )}
+      </div>
       <Link
         href={`/products/new?entrepreneurId=${id}`}
         className={buttonVariants()}
