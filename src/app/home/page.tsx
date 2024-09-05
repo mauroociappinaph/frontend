@@ -16,8 +16,18 @@ async function HomePage() {
     <div className="container">
       <h1>Todos Los Productos</h1>
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {products.map((product: Product | null) => {
+        {products.map((product) => {
           if (!product) {
+            return null;
+          }
+
+          if (!product.id) {
+            console.error("Product has no ID:", product);
+            return null;
+          }
+
+          if (!product.name) {
+            console.error("Product has no name:", product);
             return null;
           }
 
@@ -26,8 +36,19 @@ async function HomePage() {
               <CardHeader>
                 <CardTitle className="text-center">{product.name}</CardTitle>
               </CardHeader>
+              {product.image ? (
+                <img
+                  className="w-full h-48  object-cover"
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-48 object-cover"
+                />
+              ) : (
+                <div className="h-48 bg-gray-200 flex items-center justify-center">
+                  <p>No image available</p>
+                </div>
+              )}
               <CardContent>
-                <p>{product.image}</p>
                 <p>{product.description}</p>
                 <p>${product.price}</p>
               </CardContent>
