@@ -5,7 +5,7 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { profileApi } from "@/app/entrepreneur/profile/profile-api";
-import { Card, CardContent, CardTitle, CardHeader } from "@/components/ui/card";
+import { ProductCard } from "@/app/products/productCard";
 
 // Definir las interfaces
 interface Product {
@@ -13,6 +13,7 @@ interface Product {
   name: string;
   description: string;
   price: number;
+  image: string;
 }
 
 interface Entrepreneur {
@@ -34,35 +35,35 @@ function EntrepreneurProfile() {
   }, [id]);
 
   useEffect(() => {
-    const fetchEntrepreneur = async () => {
-      if (id) {
+    if (id) {
+      const fetchEntrepreneur = async () => {
         try {
           const data = await profileApi(id.toString());
           setEntrepreneur(data);
         } catch (error) {
           console.error("Error fetching entrepreneur:", error);
         }
-      }
-    };
+      };
 
-    fetchEntrepreneur();
+      fetchEntrepreneur();
+    }
   }, [id]);
 
   return (
-    <div className="container">
+    <div className="container m-6">
       <h1 className="text-4xl font-bold">{`Perfil Emprendedor con id: ${id}`}</h1>
       <div>
         {/* Mostrar los datos del emprendedor */}
         {entrepreneur && (
           <div>
             <p>
-              Nombre: {entrepreneur.firstName} {entrepreneur.lastName}
+              Nombre: {entrepreneur?.firstName} {entrepreneur?.lastName}
             </p>
-            <p>Correo: {entrepreneur.email}</p>
-            <p>Negocio: {entrepreneur.businessName}</p>
+            <p>Correo: {entrepreneur?.email}</p>
+            <p>Negocio: {entrepreneur?.businessName}</p>
             <p>
               Descripción del negocio:{" "}
-              {entrepreneur.businessDescription || "No disponible"}
+              {entrepreneur?.businessDescription || "No disponible"}
             </p>
 
             {/* Mostrar los productos */}
@@ -70,22 +71,11 @@ function EntrepreneurProfile() {
               <h2 className="text-2xl font-semibold mt-4 text-center">
                 Productos
               </h2>
-              {entrepreneur.products.length > 0 ? (
+              {entrepreneur?.products?.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
-                  <ul>
-                    {entrepreneur.products.map((product) => (
-                      <Card key={product.id}>
-                        <CardHeader>
-                          <CardTitle>{product.name}</CardTitle>
-                        </CardHeader>
-
-                        <CardContent>
-                          <p>Descripción: {product.description}</p>
-                          <p>Precio: {product.price}</p>
-                        </CardContent>
-                      </Card>
-                    ))}
-                  </ul>
+                  {entrepreneur?.products?.map((product) => (
+                    <ProductCard key={product.id} product={product} />
+                  ))}
                 </div>
               ) : (
                 <p>No hay productos disponibles.</p>
@@ -94,12 +84,14 @@ function EntrepreneurProfile() {
           </div>
         )}
       </div>
-      <Link
-        href={`/products/new?entrepreneurId=${id}`}
-        className={buttonVariants()}
-      >
-        Crear Producto
-      </Link>
+      {entrepreneur && (
+        <Link
+          href={`/products/new?entrepreneurId=${entrepreneur?.id}`}
+          className={buttonVariants()}
+        >
+          Crear Producto
+        </Link>
+      )}
     </div>
   );
 }
