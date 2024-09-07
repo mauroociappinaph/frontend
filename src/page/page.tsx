@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Header from "@/components/component/Header";
+import AboutUs from "@/components/component/AboutUs";
 import { Button } from "@/components/ui/button";
 
 function LandingPage() {
@@ -8,9 +9,7 @@ function LandingPage() {
     <div>
       <h1>Emprendeart</h1>
       <Header />
-      <Link href="/home" passHref>
-        <Button>Empezar</Button>
-      </Link>
+      <AboutUs />
     </div>
   );
 }
