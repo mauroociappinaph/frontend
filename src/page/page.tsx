@@ -6,7 +6,6 @@ import AboutUs from "@/components/component/AboutUs";
 function LandingPage() {
   return (
     <div>
-      <h1>Emprendeart</h1>
       <Header />
       <AboutUs />
     </div>
