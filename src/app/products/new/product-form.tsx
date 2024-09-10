@@ -63,7 +63,7 @@ export function ProductForm() {
       <Label>Precio</Label>
       <Input {...register("price")} />
       <div>
-        <label>Product Image</label>
+        <Label>Product Image</Label>
         <ImageUpload setImageUrl={setImageUrl} />{" "}
         {/* Passing setImageUrl to handle image URL */}
       </div>
