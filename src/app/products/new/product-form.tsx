@@ -6,11 +6,13 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
 import { createProduct } from "../product.api";
+import ImageUpload from "./imageUpload";
 
 export function ProductForm() {
   const { register, handleSubmit } = useForm();
   const router = useRouter();
   const [entrepreneurId, setEntrepreneurId] = useState<string | null>(null);
+  const [imageUrl, setImageUrl] = useState("");
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -60,8 +62,10 @@ export function ProductForm() {
 
       <Label>Precio</Label>
       <Input {...register("price")} />
-      <Label>Imagen</Label>
-      <Input {...register("image")} />
+      <div>
+        <Label>Product Image</Label>
+        <ImageUpload setImageUrl={setImageUrl} />{" "}
+      </div>
 
       <Button>Crear Producto</Button>
     </form>

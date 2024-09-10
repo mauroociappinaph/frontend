@@ -1,16 +1,13 @@
 import React from "react";
-import Link from "next/link";
+
 import Header from "@/components/component/Header";
-import { Button } from "@/components/ui/button";
+import AboutUs from "@/components/component/AboutUs";
 
 function LandingPage() {
   return (
     <div>
-      <h1>Emprendeart</h1>
       <Header />
-      <Link href="/home" passHref>
-        <Button>Empezar</Button>
-      </Link>
+      <AboutUs />
     </div>
   );
 }

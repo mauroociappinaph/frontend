@@ -22,6 +22,13 @@ const Nav = () => {
           <span className="text-primary">Home</span>
         </Link>
         <Link
+          href="/home"
+          className="text-sm font-medium hover:underline underline-offset-4 text-primary-foreground"
+          prefetch={false}
+        >
+          <span className="text-primary">Productos</span>
+        </Link>
+        <Link
           href="/entrepreneur/log-in"
           className="text-sm font-medium hover:underline underline-offset-4 text-primary-foreground"
           prefetch={false}
