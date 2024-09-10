@@ -67,7 +67,7 @@ export default function AboutUs() {
             tu negocio, nuestra plataforma te ofrece las herramientas y
             conexiones que necesitas para alcanzar nuevas alturas.
           </p>
-          <Link href="/entrepreneur/sign-in" passHref>
+          <Link href="/entrepreneur/sign-in">
             <Button> Únete a Nuestra Comunidad</Button>
           </Link>
         </div>
