@@ -65,7 +65,6 @@ export function ProductForm() {
       <div>
         <Label>Product Image</Label>
         <ImageUpload setImageUrl={setImageUrl} />{" "}
-        {/* Passing setImageUrl to handle image URL */}
       </div>
 
       <Button>Crear Producto</Button>
