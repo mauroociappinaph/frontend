@@ -12,7 +12,7 @@ export function ProductForm() {
   const { register, handleSubmit } = useForm();
   const router = useRouter();
   const [entrepreneurId, setEntrepreneurId] = useState<string | null>(null);
-  const [imageUrl, setImageUrl] = useState("");
+  const [imageUrl, setImageUrl] = useState(""); // Using imageUrl from ImageUpload
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -34,12 +34,13 @@ export function ProductForm() {
         ...data,
         price: parseFloat(data.price),
         entrepreneurId: parseInt(entrepreneurId, 10), // Convertir el ID a un número
+        image: imageUrl, // Use imageUrl here, not data.image
       });
 
       await createProduct({
         name: data.name,
         description: data.description,
-        image: data.image,
+        image: imageUrl, // Corrected: Use imageUrl instead of data.image
         price: parseFloat(data.price),
         entrepreneurId: parseInt(entrepreneurId, 10), // Asegúrate de enviar entrepreneurId como número
       });
@@ -65,6 +66,7 @@ export function ProductForm() {
       <div>
         <Label>Product Image</Label>
         <ImageUpload setImageUrl={setImageUrl} />{" "}
+        {/* Ensure imageUrl is updated */}
       </div>
 
       <Button>Crear Producto</Button>
