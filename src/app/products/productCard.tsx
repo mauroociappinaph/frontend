@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import {
   Card,
   CardHeader,
@@ -13,13 +13,15 @@ import { deleteProduct } from "./product.api";
 import { useRouter } from "next/navigation";
 
 export function ProductCard({ product }: any) {
-  const router = useRouter();
+  const [products, setProducts] = useState<any[]>([]);
+  const router = useRouter(); // Añadido para el refresh
 
   async function handleDelete(id: any) {
     console.log("ProductCard: Eliminar producto", product.id);
     try {
       await deleteProduct(product.id);
       console.log("Producto eliminado exitosamente");
+      setProducts(products.filter((product) => product.id !== id));
       router.refresh();
     } catch (error) {
       console.error("Error al eliminar el producto:", error);
@@ -43,7 +45,11 @@ export function ProductCard({ product }: any) {
         </CardContent>
         <CardFooter className="flex justify-center gap-2">
           <Button className="mt-5">Editar</Button>
-          <Button className="mt-5" variant="destructive" onClick={handleDelete}>
+          <Button
+            className="mt-5"
+            variant="destructive"
+            onClick={() => handleDelete(product.id)}
+          >
             Eliminar
           </Button>
         </CardFooter>

@@ -14,7 +14,9 @@ async function HomePage() {
 
   return (
     <div className="container">
-      <h1>Todos Los Productos</h1>
+      <CardHeader>
+        <CardTitle className="text-center"> Todos los Productos </CardTitle>
+      </CardHeader>
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {products.map((product: Product) => {
           if (!product) {

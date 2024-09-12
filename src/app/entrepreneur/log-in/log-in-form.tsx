@@ -21,7 +21,6 @@ export function LogInForm() {
       });
       console.log("Log in response:", res);
       if (res && res.id) {
-        // Redirigir a la página de perfil del usuario usando su id
         router.push(`/entrepreneur/profile/${res.id}`);
       } else {
         console.error("Error: ID not found in response");
