@@ -6,25 +6,7 @@ import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { profileApi } from "@/app/entrepreneur/profile/profile-api";
 import { ProductCard } from "@/app/products/productCard";
-
-// Definir las interfaces
-interface Product {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-  image: string;
-}
-
-interface Entrepreneur {
-  id: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  businessName: string;
-  businessDescription?: string;
-  products: Product[];
-}
+// Empty file to make the directory a module
 
 function EntrepreneurProfile() {
   const { id } = useParams();
