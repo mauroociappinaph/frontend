@@ -40,7 +40,7 @@ export function ProductForm() {
       await createProduct({
         name: data.name,
         description: data.description,
-        image: imageUrl, // Corrected: Use imageUrl instead of data.image
+        image: imageUrl,
         price: parseFloat(data.price),
         entrepreneurId: parseInt(entrepreneurId, 10), // Asegúrate de enviar entrepreneurId como número
       });

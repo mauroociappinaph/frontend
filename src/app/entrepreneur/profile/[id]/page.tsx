@@ -28,7 +28,7 @@ interface Entrepreneur {
 
 function EntrepreneurProfile() {
   const { id } = useParams();
-  const [entrepreneur, setEntrepreneur] = useState<Entrepreneur | null>(null); // Tipo Entrepreneur o null
+  const [entrepreneur, setEntrepreneur] = useState<Entrepreneur | null>(null);
 
   useEffect(() => {
     console.log("id:", id);

@@ -43,3 +43,11 @@ export async function deleteProduct(id: string) {
   const data = await res.json();
   return data;
 }
+
+export async function getProduct(id: string) {
+  const res = await fetch(`http://localhost:4000/api/products/${id}`, {
+    cache: "no-store",
+  });
+  const data = await res.json();
+  return data;
+}
