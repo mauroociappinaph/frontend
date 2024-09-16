@@ -6,15 +6,13 @@ import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { profileApi } from "@/app/entrepreneur/profile/profile-api";
 import { ProductCard } from "@/app/products/productCard";
-// Empty file to make the directory a module
+import type { Entrepreneur, Product } from "../../../../types/types";
+import { PaginationDemo } from "@/components/component/Paginador"; // Usar PaginationDemo para manejar la paginación
 
 function EntrepreneurProfile() {
   const { id } = useParams();
   const [entrepreneur, setEntrepreneur] = useState<Entrepreneur | null>(null);
-
-  useEffect(() => {
-    console.log("id:", id);
-  }, [id]);
+  const itemsPerPage = 4;
 
   useEffect(() => {
     if (id) {
@@ -33,32 +31,39 @@ function EntrepreneurProfile() {
 
   return (
     <div className="container m-6">
-      <h1 className="text-4xl font-bold">{`Perfil Emprendedor con id: ${id}`}</h1>
+      <h1 className="text-4xl font-bold">{`${entrepreneur?.businessName}`}</h1>
       <div>
-        {/* Mostrar los datos del emprendedor */}
         {entrepreneur && (
           <div>
             <p>
               Nombre: {entrepreneur?.firstName} {entrepreneur?.lastName}
             </p>
             <p>Correo: {entrepreneur?.email}</p>
-            <p>Negocio: {entrepreneur?.businessName}</p>
+
             <p>
               Descripción del negocio:{" "}
               {entrepreneur?.businessDescription || "No disponible"}
             </p>
-
-            {/* Mostrar los productos */}
             <div>
               <h2 className="text-2xl font-semibold mt-4 text-center">
                 Productos
               </h2>
               {entrepreneur?.products?.length > 0 ? (
-                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
-                  {entrepreneur?.products?.map((product) => (
-                    <ProductCard key={product.id} product={product} />
-                  ))}
-                </div>
+                <PaginationDemo
+                  totalItems={entrepreneur?.products.length}
+                  itemsPerPage={itemsPerPage}
+                >
+                  {(paginatedProducts) => (
+                    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
+                      {paginatedProducts.map((index) => {
+                        const product = entrepreneur.products[index];
+                        return (
+                          <ProductCard key={product.id} product={product} />
+                        );
+                      })}
+                    </div>
+                  )}
+                </PaginationDemo>
               ) : (
                 <p>No hay productos disponibles.</p>
               )}
