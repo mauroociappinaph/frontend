@@ -8,6 +8,15 @@ export interface Product {
     image: string;
 }
 
+export interface ProductEnterpreunerID {
+    id: string;
+    name: string;
+    description: string;
+    price: number;
+    image: string;
+    entrepreneurId: string;
+}
+
 export interface EntrepreneurId {
     id: string;
     firstName: string;

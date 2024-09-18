@@ -10,11 +10,12 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Product } from "../../../types/types";
+import { ProductEnterpreunerID } from "../../../types/types";
+import Link from "next/link";
 
 const ProductPage = () => {
   const { id } = useParams(); // Obtener el ID del producto desde la URL
-  const [product, setProduct] = useState<Product | null>(null);
+  const [product, setProduct] = useState<ProductEnterpreunerID | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -23,8 +24,13 @@ const ProductPage = () => {
     const fetchProduct = async () => {
       try {
         setLoading(true);
-        const data = await getProduct(id); // Obtener el producto usando el ID
-        setProduct(data);
+        if (typeof id === "string") {
+          const data = await getProduct(id);
+          console.log("Datos del producto:", data); // Verificar los datos obtenidos
+          setProduct(data);
+        } else {
+          setError("ID de producto no válido");
+        }
       } catch (err) {
         setError("Error al cargar el producto");
       } finally {
@@ -65,13 +71,27 @@ const ProductPage = () => {
           <p>Precio: {product.price}</p>
         </CardContent>
         <CardFooter className="flex justify-center gap-2">
-          <Button className="mt-5">Editar</Button>
-          <Button className="mt-5">Eliminar</Button>
+          {product.entrepreneursId ? (
+            <>
+              <p>ID del Emprendedor: {product.entrepreneursId}</p>{" "}
+              {/* Mostrar el ID en la interfaz */}
+              <Link
+                href={`/entrepreneur/profile/${product.entrepreneursId}`}
+                passHref
+              >
+                <Button className="mt-5">Contactar Emprendedor</Button>
+              </Link>
+            </>
+          ) : (
+            <p>Emprendedor no disponible</p>
+          )}
         </CardFooter>
+        <Link href={`/home`} passHref>
+          <Button className="mt-5">Volver a Productos</Button>
+        </Link>
       </Card>
     </div>
   );
 };
 
-// Exportar el componente como `default`
 export default ProductPage;
