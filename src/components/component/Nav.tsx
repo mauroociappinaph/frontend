@@ -102,7 +102,7 @@ const Nav = () => {
                   href="/entrepreneur/log-in"
                   className="text-sm font-medium hover:underline underline-offset-4 text-primary"
                   prefetch={false}
-                  onClick={() => toggleMenu(false)}
+                  onClick={toggleMenu}
                 >
                   Iniciar sesión
                 </Link>
@@ -112,7 +112,7 @@ const Nav = () => {
                   href="/entrepreneur/sign-in"
                   className="text-sm font-medium hover:underline underline-offset-4 text-primary"
                   prefetch={false}
-                  onClick={() => toggleMenu(false)}
+                  onClick={toggleMenu}
                 >
                   Registrarse
                 </Link>
