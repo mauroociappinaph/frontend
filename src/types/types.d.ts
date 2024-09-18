@@ -14,7 +14,7 @@ export interface ProductEnterpreunerID {
     description: string;
     price: number;
     image: string;
-    entrepreneurId: string;
+    entrepreneursId: string;
 }
 
 export interface EntrepreneurId {

@@ -1,4 +1,4 @@
-// Funciones para interactuar con la API de productos
+const localhost = "http://localhost:4000/api";
 
 export async function createProduct({
   name,
@@ -13,7 +13,7 @@ export async function createProduct({
   description: string;
   entrepreneurId: number;
 }) {
-  const res = await fetch("http://localhost:4000/api/products", {
+  const res = await fetch(`${localhost}/products`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
