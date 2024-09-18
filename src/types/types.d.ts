@@ -1,3 +1,5 @@
+// Definición de tipos y interfaces para productos, emprendedores, y estado de la aplicación
+
 export interface Product {
     id: string;
     name: string;
@@ -14,7 +16,7 @@ export interface EntrepreneurId {
     businessName: string;
     businessDescription?: string;
     products: Product[];
-    currentPage: number
+    currentPage: number;
 }
 
 export interface Entrepreneur {
@@ -25,7 +27,6 @@ export interface Entrepreneur {
     businessName: string;
     businessDescription?: string;
     products: Product[];
-
 }
 
 export interface AppState {

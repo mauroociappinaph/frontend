@@ -6,8 +6,8 @@ import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { profileApi } from "@/app/entrepreneur/profile/profile-api";
 import { ProductCard } from "@/app/products/productCard";
-import type { Entrepreneur, Product } from "../../../../types/types";
-import { PaginationDemo } from "@/components/component/Paginador"; // Usar PaginationDemo para manejar la paginación
+import type { Entrepreneur } from "../../../../types/types";
+import { PaginationDemo } from "@/components/component/Paginador";
 
 function EntrepreneurProfile() {
   const { id } = useParams();

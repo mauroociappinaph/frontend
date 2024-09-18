@@ -14,7 +14,7 @@ import { useRouter } from "next/navigation";
 
 export function ProductCard({ product }: any) {
   const [products, setProducts] = useState<any[]>([]);
-  const router = useRouter(); // Añadido para el refresh
+  const router = useRouter();
 
   async function handleDelete(id: any) {
     console.log("ProductCard: Eliminar producto", product.id);

@@ -1,3 +1,5 @@
+// Funciones para interactuar con la API de productos
+
 export async function createProduct({
   name,
   price,
