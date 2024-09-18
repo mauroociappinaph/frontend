@@ -1,28 +1,11 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Link from "next/link";
 import { CheckIcon, Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
+import useNavHook from "../../hook/useNavHook";
 
 const Nav = () => {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > 20;
-      setScrolled(isScrolled);
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
+  const { scrolled, menuOpen, toggleMenu } = useNavHook();
 
   return (
     <header
@@ -62,7 +45,7 @@ const Nav = () => {
         <nav className="hidden lg:flex ml-auto gap-4 sm:gap-6">
           <Link
             href="/"
-            className="text-sm text-primary lg:text-base font-medium hover:underline underline-offset-4 "
+            className="text-sm text-primary lg:text-base font-medium hover:underline underline-offset-4"
             prefetch={false}
           >
             <span className="text-primary">Home</span>
@@ -99,7 +82,7 @@ const Nav = () => {
                   href="/"
                   className="text-sm font-medium hover:underline underline-offset-4 text-primary"
                   prefetch={false}
-                  onClick={() => setMenuOpen(false)}
+                  onClick={toggleMenu}
                 >
                   Home
                 </Link>
@@ -109,7 +92,7 @@ const Nav = () => {
                   href="/home"
                   className="text-sm font-medium hover:underline underline-offset-4 text-primary"
                   prefetch={false}
-                  onClick={() => setMenuOpen(false)}
+                  onClick={toggleMenu}
                 >
                   Productos
                 </Link>
@@ -119,7 +102,7 @@ const Nav = () => {
                   href="/entrepreneur/log-in"
                   className="text-sm font-medium hover:underline underline-offset-4 text-primary"
                   prefetch={false}
-                  onClick={() => setMenuOpen(false)}
+                  onClick={() => toggleMenu(false)}
                 >
                   Iniciar sesión
                 </Link>
@@ -129,7 +112,7 @@ const Nav = () => {
                   href="/entrepreneur/sign-in"
                   className="text-sm font-medium hover:underline underline-offset-4 text-primary"
                   prefetch={false}
-                  onClick={() => setMenuOpen(false)}
+                  onClick={() => toggleMenu(false)}
                 >
                   Registrarse
                 </Link>
