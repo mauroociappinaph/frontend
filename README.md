@@ -1,36 +1,116 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Frontend Application
 
-## Getting Started
+## 📖 Descripción
 
-First, run the development server:
+Este proyecto es una aplicación frontend desarrollada utilizando **Next.js** y **TypeScript**. Su objetivo principal es proporcionar una interfaz de usuario dinámica y moderna, con una experiencia optimizada para la gestión de usuarios, autenticación y manejo de pagos, con integraciones a servicios externos como **Stripe** y **Cloudinary**.
+
+## ✨ Características Principales
+
+- **Autenticación** con NextAuth.js.
+- **Gestión de imágenes** usando Cloudinary.
+- **Manejo de formularios** con React Hook Form.
+- **Solicitudes HTTP**
+- **Sistema de pagos** integrado con Stripe.
+- Gestión de estado global utilizando **Zustand**.
+- **Estilos personalizados** con Tailwind CSS y componentes reutilizables con Radix UI.
+
+## 📋 Requisitos Previos
+
+Antes de comenzar, asegúrate de tener las siguientes herramientas instaladas en tu entorno:
+
+- **Node.js** (versión 14 o superior)
+- **npm** o **pnpm** como gestor de paquetes
+
+## 🚀 Instalación
+
+Sigue los pasos a continuación para configurar el proyecto en tu entorno local:
+
+1. Clona el repositorio:
+
+   ```bash
+   git clone https://github.com/mauroociappinaph/frontend
+   ```
+
+2. Dirígete al directorio del proyecto:
+
+   ```bash
+   cd frontend
+   ```
+
+3. Instala las dependencias necesarias:
+
+   ```bash
+   npm install
+   # o
+   pnpm install
+   ```
+
+## 💻 Ejecución del Proyecto
+
+Para iniciar el servidor de desarrollo, ejecuta el siguiente comando:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
+# o
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Esto abrirá la aplicación en modo desarrollo en [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Comandos adicionales:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **Compilar el proyecto**:
 
-## Learn More
+  ```bash
+  npm run build
+  ```
 
-To learn more about Next.js, take a look at the following resources:
+- **Ejecutar en producción**:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+  ```bash
+  npm run start
+  ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **Linter**:
 
-## Deploy on Vercel
+  ```bash
+  npm run lint
+  ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📚 Estructura del Proyecto
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
+├── src/
+│   ├── app/              # Páginas y rutas
+│   ├── components/       # Componentes reutilizables
+│   ├── hooks/            # Custom hooks
+│   ├── lib/              # Librerías y utilidades
+│   ├── store/            # Almacenamiento de estado con Zustand
+│   ├── utils/            # Utilidades varias
+│   └── types/            # Definiciones de tipos
+├── public/               # Archivos estáticos
+├── package.json          # Dependencias y scripts del proyecto
+├── tailwind.config.ts    # Configuración de Tailwind CSS
+├── tsconfig.json         # Configuración de TypeScript
+└── README.md             # Este archivo
+```
+
+## 🛠️ Tecnologías Utilizadas
+
+- **Next.js**: Framework React para renderizado del lado del servidor y del cliente.
+- **TypeScript**: Superconjunto de JavaScript que añade tipos estáticos.
+- **Tailwind CSS**: Framework para estilos CSS.
+- **Zustand**: Manejo de estado global ligero y flexible.
+- **NextAuth**: Autenticación para Next.js.
+- **Axios**: Cliente HTTP basado en promesas.
+- **Cloudinary**: Gestión de imágenes en la nube.
+- **Stripe**: Procesador de pagos.
+- **React Hook Form**: Manejo eficiente de formularios en React.
+
+## 🤝 Contribuciones
+
+Si deseas contribuir a este proyecto, no dudes en hacer un fork, crear una nueva rama y enviar un Pull Request.
+
+---
+
+¡Gracias por revisar este proyecto! Si tienes alguna duda o sugerencia, no dudes en abrir un issue.
