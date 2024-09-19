@@ -3,6 +3,7 @@ import React from "react";
 import Link from "next/link";
 import { CheckIcon, Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import useNavHook from "../../hook/useNavHook";
+import { useStore } from "zustand";
 
 const Nav = () => {
   const { scrolled, menuOpen, toggleMenu } = useNavHook();

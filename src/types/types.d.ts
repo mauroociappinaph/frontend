@@ -36,6 +36,7 @@ export interface Entrepreneur {
     businessName: string;
     businessDescription?: string;
     products: Product[];
+    avatar: string;
 }
 
 export interface AppState {

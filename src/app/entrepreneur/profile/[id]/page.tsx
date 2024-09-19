@@ -30,7 +30,7 @@ function EntrepreneurProfile() {
   }, [id]);
 
   return (
-    <div className="container m-6">
+    <div className="container mt-20 mx-6">
       <h1 className="text-4xl font-bold">{`${entrepreneur?.businessName}`}</h1>
       <div>
         {entrepreneur && (
