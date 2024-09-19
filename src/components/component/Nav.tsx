@@ -51,7 +51,7 @@ const Nav = () => {
             <span className="text-primary">Home</span>
           </Link>
           <Link
-            href="/home"
+            href="/products"
             className="text-sm lg:text-base font-medium hover:underline underline-offset-4 text-primary-foreground"
             prefetch={false}
           >
@@ -89,7 +89,7 @@ const Nav = () => {
               </li>
               <li>
                 <Link
-                  href="/home"
+                  href="/products"
                   className="text-sm font-medium hover:underline underline-offset-4 text-primary"
                   prefetch={false}
                   onClick={toggleMenu}
