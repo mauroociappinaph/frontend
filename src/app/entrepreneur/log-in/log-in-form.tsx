@@ -16,20 +16,22 @@ export function LogInForm() {
 
   const onSubmit = handleSubmit(async (data) => {
     try {
-      console.log("Form data:", data);
-      const res = await logIn({
+      const result = await logIn({
         email: data.email,
         password: data.password,
       });
-      console.log("Log in response:", res);
-      if (res && res.id) {
-        setUser(res.user);
-        router.push(`/entrepreneur/profile/${res.id}`);
+
+      if (result.access_token) {
+        localStorage.setItem("access_token", result.access_token);
+
+        setUser(result.entrepreneur);
+
+        router.push(`/entrepreneur/profile/${result.entrepreneur.id}`);
       } else {
-        console.error("Error: ID not found in response");
+        console.error("Error en la autenticación");
       }
     } catch (error) {
-      console.error("Login failed:", error);
+      console.error("Error en el inicio de sesión:", error);
     }
   });
 

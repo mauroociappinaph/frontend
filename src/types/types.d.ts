@@ -28,6 +28,7 @@ export interface EntrepreneurId {
     currentPage: number;
 }
 
+// Definición de Entrepreneur y AppState
 export interface Entrepreneur {
     id: string;
     firstName: string;
@@ -36,17 +37,17 @@ export interface Entrepreneur {
     businessName: string;
     businessDescription?: string;
     products: Product[];
-    avatar: string;
+    avatar?: string; // Avatar opcional
 }
 
 export interface AppState {
     products: Product[];
-    user: User | null;
+    entrepreneur: Entrepreneur | null; // Cambiar 'user' por 'entrepreneur'
     loading: boolean;
     error: string | null;
     addProduct: (product: Product) => void;
     removeProduct: (productId: string) => void;
-    setUser: (user: User) => void;
+    setUser: (entrepreneur: Entrepreneur) => void; // Cambiar 'user' por 'entrepreneur'
     clearUser: () => void;
     setLoading: (loading: boolean) => void;
     setError: (error: string | null) => void;
@@ -56,5 +57,5 @@ export interface User {
     id: string;
     name: string;
     email: string;
-    avatarUrl?: string;  // Propiedad opcional para la URL del avatar
+
 }
