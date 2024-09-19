@@ -7,10 +7,12 @@ import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { logIn } from "./log-in-api";
+import { useStore } from "@/store/useStore";
 
 export function LogInForm() {
   const { register, handleSubmit } = useForm();
   const router = useRouter();
+  const { setUser } = useStore();
 
   const onSubmit = handleSubmit(async (data) => {
     try {
@@ -21,6 +23,7 @@ export function LogInForm() {
       });
       console.log("Log in response:", res);
       if (res && res.id) {
+        setUser(res.user);
         router.push(`/entrepreneur/profile/${res.id}`);
       } else {
         console.error("Error: ID not found in response");

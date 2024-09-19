@@ -56,4 +56,5 @@ export interface User {
     id: string;
     name: string;
     email: string;
+    avatarUrl?: string;  // Propiedad opcional para la URL del avatar
 }
